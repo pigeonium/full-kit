@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: pigeonium_db
+    restart: always
+    environment:
+      MYSQL_DATABASE: pigeonium
+      MYSQL_USER: pigeonium
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: rootpassword
+    volumes:
+      - ./pigeonium.sql:/docker-entrypoint-initdb.d/init.sql
+      - db_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - pigeonium-net
+    healthcheck:
+      test: ["CMD", "mysql", "--database=pigeonium", "--user=pigeonium", "--password=password", "-e", "SELECT 1;"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+      start_period: 30s
+
+  api:
+    build:
+      context: .
+      dockerfile: api.Dockerfile
+    container_name: pigeonium_api
+    restart: always
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "14540:14540"
+    networks:
+      - pigeonium-net
+    environment:
+      MYSQL_HOST: db
+      ADMIN_PRV_KEY: eabec7dbd973428608e0aac3f4bd5ed2631b1490f371cc4f9042d7889d721340
+      ADMIN_PUB_KEY: 6f5f2a16f017426b31051ea7dd31e2d6cdce0da35f1eda725eac982165f3a05e7750f9cb84ec2e035895af8f1323ffe46a483a9a6f0d7ef593eef2861ac242c5
+      BASE_CU_ISSUER: 1234ee4fb2ebb6e7c6d4132e45c07565
+
+  explorer:
+    build:
+      context: .
+      dockerfile: explorer.Dockerfile
+    container_name: pigeonium_explorer
+    restart: always
+    ports:
+      - "8080:80"
+    depends_on:
+      - api
+    networks:
+      - pigeonium-net
+
+networks:
+  pigeonium-net:
+    driver: bridge
+
+volumes:
+  db_data:
