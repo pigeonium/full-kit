@@ -1,5 +1,5 @@
 # Pigeonium Full-Kit
-この完全なキットは、pythonライブラリとAPIサーバー、Webエクスプローラー、それらを簡単にセットアップできるDocker関連のファイルを提供します。
+この完全なキットは、PigeoniumのpythonライブラリとAPIサーバー、Webエクスプローラー、それらを簡単にセットアップできるDocker関連のファイルを提供します。
 
 ## セットアップ (Docker)
 
