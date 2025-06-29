@@ -13,8 +13,6 @@ services:
     volumes:
       - ./pigeonium.sql:/docker-entrypoint-initdb.d/init.sql
       - db_data:/var/lib/mysql
-    ports:
-      - "3306:3306"
     networks:
       - pigeonium-net
     healthcheck:
