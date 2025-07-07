@@ -30,22 +30,12 @@
 ├── explorer.Dockerfile     # Webエクスプローラー用Dockerfile
 ├── nginx.conf              # Nginx設定ファイル
 ├── pigeonium/              # Pigeoniumコアライブラリ
-│   ├── __init__.py         #
-│   ├── config.py           #
-│   ├── contract.py         #
-│   ├── currency.py         #
-│   ├── error.py            #
-│   ├── state.py            #
-│   ├── struct.py           #
-│   ├── transaction.py      #
-│   ├── utils.py            #
-│   └── wallet.py           #
-├── pigeonium.sql           # 初期データベーススキーマ
 ├── server/                 # APIサーバー
 │   ├── api.py              # APIエンドポイント定義
 │   ├── api_types.py        # APIデータ型定義
 │   ├── config.py           # サーバー設定
 │   ├── main.py             # FastAPIアプリケーションのエントリーポイント
+│   ├── pigeonium.sql       # 初期データベーススキーマ
 │   └── pigeonium/          # Pigeoniumコアライブラリ (サーバー用)
 └── web_explorer/           # Webフロントエンド
     ├── address.html        # アドレス詳細ページ
