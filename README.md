@@ -6,8 +6,7 @@
 1.  DockerとDocker Composeがインストールされていることを確認してください。
 2.  リポジトリをクローンします。
     ```bash
-    git clone --recursive https://github.com/pigeonium/full-kit.git
-    cd full-kit
+    git clone --recursive https://github.com/pigeonium/full-kit.git && cd full-kit
     ```
 3.  Dockerコンテナをビルドして起動します。
     ```bash
