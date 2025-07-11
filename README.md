@@ -10,7 +10,7 @@
     ```
 3.  Dockerコンテナをビルドして起動します。
     ```bash
-    docker-compose up -d --build
+    docker compose up -d --build
     ```
 
 コンテナが起動すると、以下のサービスが利用可能になります。
