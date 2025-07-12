@@ -48,7 +48,7 @@ services:
     container_name: pigeonium_explorer
     restart: always
     ports:
-      - "8080:80"
+      - "14543:80"
     depends_on:
       - api
     networks:
